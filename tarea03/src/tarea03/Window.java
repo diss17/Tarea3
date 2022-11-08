@@ -5,21 +5,64 @@ import javax.swing.*;
 
 public class Window extends JFrame {
 
+    Expendedor exp;
+    public JPanel panel;
+
     public Window() {
-        this.setLayout(new BorderLayout());
-        this.setSize(600, 600);//Establece tamanho de la ventana
-        this.setTitle("Expendedor de Bebidas 3000");
-        this.setLocationRelativeTo(null);//Establece posicion de la ventana
-
-        //Paneles dentro de la ventana
-        this.add(new JButton("sur"), BorderLayout.SOUTH);
-        this.add(new JButton("centro"), BorderLayout.CENTER);
-        this.add(new JButton("norte"), BorderLayout.NORTH);
-        this.add(new JButton("este"), BorderLayout.EAST);
-        this.add(new JButton("oeste"), BorderLayout.WEST);
-
-        //Visibilidad y cierre de la ventana
+        setSize(900, 700);//Establece tamanho de la ventana
+        setTitle("Expendedor de Bebidas 3000");
+        setLocationRelativeTo(null);//Establece posicion de la ventana
+        IniciarVentana();
         setVisible(true);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+    }
+
+    private void IniciarVentana() {
+        Paneles();
+    }
+
+    private void Paneles() {
+        panel = new JPanel();
+        panel.setLayout(null);
+        this.getContentPane().add(panel);
+        Buttons();
+        Etiquetas();
+    }
+
+    private void Etiquetas() {
+        exp = new Expendedor(6, 500, panel);
+        JLabel expendedor = new JLabel();
+        ImageIcon exp = new ImageIcon("exp1.png");
+        expendedor.setBounds(60, -15, 600, 600);
+        expendedor.setIcon(new ImageIcon(exp.getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH)));
+        panel.add(expendedor);
+    }
+
+    private void Buttons() {
+        JButton boton1 = new JButton();
+        JButton boton2 = new JButton();
+        JButton boton3 = new JButton();
+
+        boton1.setText("COKE");
+        ImageIcon foto1 = new ImageIcon("cokeboton2.jpg");
+        boton1.setBounds(340, 90, 75, 30);
+        boton1.setIcon(new ImageIcon(foto1.getImage().getScaledInstance(boton1.getWidth()+12, boton1.getHeight(), Image.SCALE_SMOOTH)));
+        boton1.setEnabled(true);
+        panel.add(boton1);
+
+        boton2.setText("SPRITE");
+        ImageIcon foto2 = new ImageIcon("spriteboton.png");
+        boton2.setBounds(340,180, 75, 30);
+        boton2.setIcon(new ImageIcon(foto2.getImage().getScaledInstance(boton2.getWidth()+12, boton2.getHeight(), Image.SCALE_SMOOTH)));
+        boton2.setEnabled(true);
+        panel.add(boton2);
+
+        boton3.setText("FANTA");
+        ImageIcon foto3 = new ImageIcon("fantaboton.jpg");
+        boton3.setBounds(340, 135, 75, 30);
+        boton3.setIcon(new ImageIcon(foto3.getImage().getScaledInstance(boton3.getWidth()+12, boton3.getHeight(), Image.SCALE_SMOOTH)));
+        boton3.setEnabled(true);
+        panel.add(boton3);
     }
 }

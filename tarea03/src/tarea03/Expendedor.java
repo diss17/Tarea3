@@ -1,6 +1,8 @@
 package tarea03;
 
-class Expendedor {
+import javax.swing.*;
+
+class Expendedor extends JPanel {
 
     private int cantidadBebidas;
     private int precioBebidas;
@@ -12,19 +14,22 @@ class Expendedor {
     private Moneda Pago;
     private Bebida gaseosa;
 
-    public Expendedor(int numBebidas, int valorBebidas) {
+    public Expendedor(int numBebidas, int valorBebidas, JPanel panel) {
         cantidadBebidas = numBebidas;
         precioBebidas = valorBebidas;
         CocaCola = new Deposito();
         Sprite = new Deposito();
         Fanta = new Deposito();
         coins = new Deposito();
+        if (numBebidas >= 6) numBebidas = 6;
+        int posicionB = -30;
         //Creacion de bebidas dependiendo de la cantidad establecida 
         //mediante un ciclo que les asigna un numero de serie
         for (int i = 0; i < cantidadBebidas; i++) {
-            CocaCola.addBebida(new CocaCola(i + 100));
-            Sprite.addBebida(new Sprite(i + 200));
-            Fanta.addBebida(new Fanta(i + 300));
+            CocaCola.addBebida(new CocaCola(posicionB, panel, 100 + i));
+            Sprite.addBebida(new Sprite(posicionB, panel, 200 + 1));
+            Fanta.addBebida(new Fanta(posicionB, panel, 300 + 1));
+            posicionB = posicionB + 60;
         }
     }
 

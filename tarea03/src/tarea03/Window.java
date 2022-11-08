@@ -33,9 +33,10 @@ public class Window extends JFrame {
     private void Etiquetas() {
         exp = new Expendedor(6, 500, panel);
         JLabel expendedor = new JLabel();
-        ImageIcon exp = new ImageIcon("exp1.png");
-        expendedor.setBounds(60, -15, 600, 600);
-        expendedor.setIcon(new ImageIcon(exp.getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH)));
+        //A la imagén importada le damos la dirección por problemas técnicos.
+        ImageIcon exp = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/Tarea3REAL/Tarea3/tarea03/src/exp5.png");
+        expendedor.setBounds(-10, -20, 800, 700);
+        expendedor.setIcon(new ImageIcon(exp.getImage().getScaledInstance(800, 700, Image.SCALE_SMOOTH)));
         panel.add(expendedor);
     }
 
@@ -45,22 +46,22 @@ public class Window extends JFrame {
         JButton boton3 = new JButton();
 
         boton1.setText("COKE");
-        ImageIcon foto1 = new ImageIcon("cokeboton2.jpg");
-        boton1.setBounds(340, 90, 75, 30);
+        ImageIcon foto1 = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/Tarea3REAL/Tarea3/tarea03/src/cokeboton2.jpg");
+        boton1.setBounds(370, 102, 81, 35);
         boton1.setIcon(new ImageIcon(foto1.getImage().getScaledInstance(boton1.getWidth()+12, boton1.getHeight(), Image.SCALE_SMOOTH)));
         boton1.setEnabled(true);
         panel.add(boton1);
 
         boton2.setText("SPRITE");
-        ImageIcon foto2 = new ImageIcon("spriteboton.png");
-        boton2.setBounds(340,180, 75, 30);
+        ImageIcon foto2 = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/Tarea3REAL/Tarea3/tarea03/src/spriteboton.png");
+        boton2.setBounds(370,207, 81, 35);
         boton2.setIcon(new ImageIcon(foto2.getImage().getScaledInstance(boton2.getWidth()+12, boton2.getHeight(), Image.SCALE_SMOOTH)));
         boton2.setEnabled(true);
         panel.add(boton2);
 
         boton3.setText("FANTA");
-        ImageIcon foto3 = new ImageIcon("fantaboton.jpg");
-        boton3.setBounds(340, 135, 75, 30);
+        ImageIcon foto3 = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/Tarea3REAL/Tarea3/tarea03/src/fantaboton.jpg");
+        boton3.setBounds(370, 154, 81, 35);
         boton3.setIcon(new ImageIcon(foto3.getImage().getScaledInstance(boton3.getWidth()+12, boton3.getHeight(), Image.SCALE_SMOOTH)));
         boton3.setEnabled(true);
         panel.add(boton3);

@@ -22,14 +22,14 @@ class Expendedor extends JPanel {
         Fanta = new Deposito();
         coins = new Deposito();
         if (numBebidas >= 6) numBebidas = 6;
-        int posicionB = -30;
+        int posicionB = -5;
         //Creacion de bebidas dependiendo de la cantidad establecida 
         //mediante un ciclo que les asigna un numero de serie
         for (int i = 0; i < cantidadBebidas; i++) {
             CocaCola.addBebida(new CocaCola(posicionB, panel, 100 + i));
             Sprite.addBebida(new Sprite(posicionB, panel, 200 + 1));
             Fanta.addBebida(new Fanta(posicionB, panel, 300 + 1));
-            posicionB = posicionB + 60;
+            posicionB = posicionB + 69;
         }
     }
 

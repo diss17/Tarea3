@@ -9,7 +9,7 @@ public class Window extends JFrame {
     public JPanel panel;
 
     public Window() {
-        setSize(900, 700);//Establece tamanho de la ventana
+        setSize(1200, 700);//Establece tamanho de la ventana
         setTitle("Expendedor de Bebidas 3000");
         setLocationRelativeTo(null);//Establece posicion de la ventana
         IniciarVentana();
@@ -34,9 +34,9 @@ public class Window extends JFrame {
         exp = new Expendedor(6, 500, panel);
         JLabel expendedor = new JLabel();
         //A la imagén importada le damos la dirección por problemas técnicos.
-        ImageIcon exp = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/Tarea3REAL/Tarea3/tarea03/src/exp5.png");
-        expendedor.setBounds(-10, -20, 800, 700);
-        expendedor.setIcon(new ImageIcon(exp.getImage().getScaledInstance(800, 700, Image.SCALE_SMOOTH)));
+        ImageIcon exp = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/Tarea3REAL/Tarea3/tarea03/src/expFinal.png");
+        expendedor.setBounds(-10, -20, 1200, 700);
+        expendedor.setIcon(new ImageIcon(exp.getImage().getScaledInstance(1200, 700, Image.SCALE_SMOOTH)));
         panel.add(expendedor);
     }
 
@@ -47,21 +47,21 @@ public class Window extends JFrame {
 
         boton1.setText("COKE");
         ImageIcon foto1 = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/Tarea3REAL/Tarea3/tarea03/src/cokeboton2.jpg");
-        boton1.setBounds(370, 102, 81, 35);
+        boton1.setBounds(360, 101, 75, 35);
         boton1.setIcon(new ImageIcon(foto1.getImage().getScaledInstance(boton1.getWidth()+12, boton1.getHeight(), Image.SCALE_SMOOTH)));
         boton1.setEnabled(true);
         panel.add(boton1);
 
         boton2.setText("SPRITE");
         ImageIcon foto2 = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/Tarea3REAL/Tarea3/tarea03/src/spriteboton.png");
-        boton2.setBounds(370,207, 81, 35);
+        boton2.setBounds(360,206, 75, 35);
         boton2.setIcon(new ImageIcon(foto2.getImage().getScaledInstance(boton2.getWidth()+12, boton2.getHeight(), Image.SCALE_SMOOTH)));
         boton2.setEnabled(true);
         panel.add(boton2);
 
         boton3.setText("FANTA");
         ImageIcon foto3 = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/Tarea3REAL/Tarea3/tarea03/src/fantaboton.jpg");
-        boton3.setBounds(370, 154, 81, 35);
+        boton3.setBounds(360, 153, 75, 35);
         boton3.setIcon(new ImageIcon(foto3.getImage().getScaledInstance(boton3.getWidth()+12, boton3.getHeight(), Image.SCALE_SMOOTH)));
         boton3.setEnabled(true);
         panel.add(boton3);

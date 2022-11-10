@@ -16,12 +16,17 @@ class Deposito {
         b.add(num);
     }
 
-    public Bebida getBebida() {
+    public Bebida getBebida(int x) {
         if (b.size() <= 0) {
             return null;
-        } else {
-            Bebida a = (Bebida) b.remove(0);
+        } else {           
+            Bebida a = (Bebida) b.get(x);
             return a;
+        }
+    }
+    public void actualizarlo(int x){
+        for(int i=0;i<x;i++){
+            b.set(i,(Bebida) b.get(i+1));
         }
     }
 

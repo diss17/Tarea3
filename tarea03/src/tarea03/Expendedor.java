@@ -7,6 +7,9 @@ class Expendedor extends JPanel {
     private int cantidadBebidas;
     private int precioBebidas;
     private int aux_Bebida;
+    private int dep1;
+    private int dep2;
+    private int dep3;
     private Deposito CocaCola;
     private Deposito Sprite;
     private Deposito Fanta;
@@ -18,8 +21,11 @@ class Expendedor extends JPanel {
         cantidadBebidas = numBebidas;
         precioBebidas = valorBebidas;
         CocaCola = new Deposito();
+        dep1=6;
         Sprite = new Deposito();
+        dep2=6;
         Fanta = new Deposito();
+        dep3=6;
         coins = new Deposito();
         if (numBebidas >= 6) {
             numBebidas = 6;
@@ -47,8 +53,13 @@ class Expendedor extends JPanel {
                     case 1:
                         //Cada intento de comprar una bebida pasara por este switch case el cual se encarga de verificar el tipo de bebida
                         //y ver si se encuentra disponible, sino para segun el caso lanzar un tipo de Exception con sus respectivos Output's
-                        Bebida aux2 = CocaCola.getBebida();
-                        CocaCola.getBebida().mover();
+                        if(dep1>0){
+                            dep1=dep1-1;
+                        }else{
+                            System.out.println("No hay bebidas disponibles");
+                        }
+                        Bebida aux2 = CocaCola.getBebida(dep1);
+                        CocaCola.getBebida(dep1).mover();
                         if (aux2 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");
@@ -56,8 +67,9 @@ class Expendedor extends JPanel {
                             return aux2;
                         }
                     case 2:
-                        Bebida aux3 = Sprite.getBebida();
-                        Sprite.getBebida().mover();
+                        dep2=dep2-1;
+                        Bebida aux3 = Sprite.getBebida(dep2);
+                        Sprite.getBebida(dep2).mover();
 
                         if (aux3 == null) {
                             aux_Bebida = Pago.getValor();
@@ -67,8 +79,9 @@ class Expendedor extends JPanel {
                         }
 
                     case 3:
-                        Bebida aux4 = Fanta.getBebida();
-                        Fanta.getBebida().mover();
+                        dep3=dep3-1;
+                        Bebida aux4 = Fanta.getBebida(dep3);
+                        Fanta.getBebida(dep3).mover();
                         if (aux4 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");
@@ -90,7 +103,7 @@ class Expendedor extends JPanel {
             }
         } else {
             //Si la moneda utilizada es de tipo null
-            throw new PagoIncorrectoException("Metodo pago invalido");
+            throw new PagoIncorrectoException("Bienvenido!!");
         }
     }
 

@@ -36,7 +36,6 @@ class Sprite extends Bebida {
         sprite.setBounds(212, px, 55, 55);
         sprite.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         panel.add(sprite);
-        BorradorBebidas a = new BorradorBebidas(sprite, s);
 
     }
 
@@ -67,7 +66,6 @@ class CocaCola extends Bebida {
         cocacola.setBounds(142, px, 55, 55);
         cocacola.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         panel.add(cocacola);
-        BorradorBebidas a = new BorradorBebidas(cocacola, c);
 
     }
 
@@ -98,7 +96,7 @@ class Fanta extends Bebida {
         fanta.setBounds(282, px, 55, 55);
         fanta.setIcon(new ImageIcon(imagen3.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         panel.add(fanta);
-        BorradorBebidas a = new BorradorBebidas(fanta, f);
+        
 
     }
 

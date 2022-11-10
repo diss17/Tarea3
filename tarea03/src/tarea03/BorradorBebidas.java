@@ -21,7 +21,7 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
 
     @Override
     public void mouseDragged(MouseEvent event) {
-        event.getComponent().setLocation((event.getX() + event.getComponent().getX()) - X, (event.getY() + event.getComponent().getY()) - Y);
+        
 
     }
 

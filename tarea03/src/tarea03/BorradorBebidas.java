@@ -32,8 +32,7 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        objetivo.setVisible(false);
-
+        objetivo.setVisible(false);             
     }
 
     @Override

@@ -60,6 +60,7 @@ class Expendedor extends JPanel {
                         }
                         Bebida aux2 = CocaCola.getBebida(dep1);
                         CocaCola.getBebida(dep1).mover();
+                        BorradorBebidas a = new BorradorBebidas(CocaCola.getBebida(dep1).etiqueta(), CocaCola.getBebida(dep1).getSerie());
                         if (aux2 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");
@@ -67,10 +68,14 @@ class Expendedor extends JPanel {
                             return aux2;
                         }
                     case 2:
-                        dep2=dep2-1;
+                        if(dep2>0){
+                            dep2=dep2-1;
+                        }else{
+                            System.out.println("No hay bebidas disponibles");
+                        }
                         Bebida aux3 = Sprite.getBebida(dep2);
                         Sprite.getBebida(dep2).mover();
-
+                        BorradorBebidas b = new BorradorBebidas(Sprite.getBebida(dep2).etiqueta(), Sprite.getBebida(dep2).getSerie());
                         if (aux3 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");
@@ -79,9 +84,14 @@ class Expendedor extends JPanel {
                         }
 
                     case 3:
-                        dep3=dep3-1;
+                        if(dep3>0){
+                            dep3=dep3-1;
+                        }else{
+                            System.out.println("No hay bebidas disponibles");
+                        }
                         Bebida aux4 = Fanta.getBebida(dep3);
                         Fanta.getBebida(dep3).mover();
+                        BorradorBebidas c = new BorradorBebidas(Fanta.getBebida(dep3).etiqueta(), Fanta.getBebida(dep3).getSerie());
                         if (aux4 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");

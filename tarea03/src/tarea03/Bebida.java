@@ -35,8 +35,7 @@ class Sprite extends Bebida {
         ImageIcon imagen2 = new ImageIcon("Sprite.png");
         sprite.setBounds(212, px, 55, 55);
         sprite.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
-        panel.add(sprite);
-
+        panel.add(sprite);     
     }
 
     @Override
@@ -81,7 +80,7 @@ class CocaCola extends Bebida {
 
     @Override
     public void mover() {
-        cocacola.setLocation(207, 540);
+        cocacola.setLocation(207, 540);//207 540
     }
 }
 

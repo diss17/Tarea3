@@ -21,8 +21,10 @@ class Expendedor extends JPanel {
         Sprite = new Deposito();
         Fanta = new Deposito();
         coins = new Deposito();
-        if (numBebidas >= 6) numBebidas = 6;
-        int posicionB = -5;
+        if (numBebidas >= 6) {
+            numBebidas = 6;
+        }
+        int posicionB = 110;
         //Creacion de bebidas dependiendo de la cantidad establecida 
         //mediante un ciclo que les asigna un numero de serie
         for (int i = 0; i < cantidadBebidas; i++) {
@@ -46,6 +48,7 @@ class Expendedor extends JPanel {
                         //Cada intento de comprar una bebida pasara por este switch case el cual se encarga de verificar el tipo de bebida
                         //y ver si se encuentra disponible, sino para segun el caso lanzar un tipo de Exception con sus respectivos Output's
                         Bebida aux2 = CocaCola.getBebida();
+                        CocaCola.getBebida().mover();
                         if (aux2 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");
@@ -54,14 +57,18 @@ class Expendedor extends JPanel {
                         }
                     case 2:
                         Bebida aux3 = Sprite.getBebida();
+                        Sprite.getBebida().mover();
+
                         if (aux3 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");
                         } else {
                             return aux3;
                         }
+
                     case 3:
                         Bebida aux4 = Fanta.getBebida();
+                        Fanta.getBebida().mover();
                         if (aux4 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");

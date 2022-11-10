@@ -80,7 +80,7 @@ class CocaCola extends Bebida {
 
     @Override
     public void mover() {
-        cocacola.setLocation(207, 540);//207 540
+        cocacola.setLocation(207, 540);//207
     }
 }
 

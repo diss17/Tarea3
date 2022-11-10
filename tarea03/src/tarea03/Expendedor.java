@@ -16,6 +16,8 @@ class Expendedor extends JPanel {
     private Deposito coins;
     private Moneda Pago;
     private Bebida gaseosa;
+    private int posicionB;
+    
 
     public Expendedor(int numBebidas, int valorBebidas, JPanel panel) {
         cantidadBebidas = numBebidas;
@@ -30,15 +32,16 @@ class Expendedor extends JPanel {
         if (numBebidas >= 6) {
             numBebidas = 6;
         }
-        int posicionB = 110;
+        posicionB = 110;
         //Creacion de bebidas dependiendo de la cantidad establecida 
         //mediante un ciclo que les asigna un numero de serie
         for (int i = 0; i < cantidadBebidas; i++) {
             CocaCola.addBebida(new CocaCola(posicionB, panel, 100 + i));
-            Sprite.addBebida(new Sprite(posicionB, panel, 200 + 1));
-            Fanta.addBebida(new Fanta(posicionB, panel, 300 + 1));
+            Sprite.addBebida(new Sprite(posicionB, panel, 200 + i));
+            Fanta.addBebida(new Fanta(posicionB, panel, 300 + i));
             posicionB = posicionB + 69;
         }
+        
     }
 
     public Bebida comprarBebida(Moneda m, int aux_b) throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException {

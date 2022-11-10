@@ -13,8 +13,9 @@ public class Window extends JFrame implements ActionListener {
     Comprador cliente_principal;
     JLabel Bebida_selected;
     JLabel moneda_selected;
-    JLabel Cambio;
-    JButton boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8,boton9;
+    JLabel expendedor;
+    Label Cambio;
+    JButton boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8,boton9,boton10;
     Moneda moneda_seleccionada;
     BorradorBebidas r;
     Bebida x;
@@ -47,7 +48,7 @@ public class Window extends JFrame implements ActionListener {
     private void Etiquetas() {
         Bebida_selected = new JLabel();
         moneda_selected = new JLabel();
-        JLabel expendedor = new JLabel();
+        expendedor = new JLabel();
         exp_principal = new Expendedor(6, 800, panel);
         cliente_principal = new Comprador(moneda_seleccionada, opcion, exp_principal);
         
@@ -90,6 +91,8 @@ public class Window extends JFrame implements ActionListener {
         boton8.addActionListener(this);
         boton9 = new JButton();
         boton9.addActionListener(this);
+        boton10 = new JButton();
+        boton10.addActionListener(this);
 
         boton1.setText("COKE");
         ImageIcon foto1 = new ImageIcon("cokeboton2.jpg");
@@ -156,6 +159,10 @@ public class Window extends JFrame implements ActionListener {
         boton9.setIcon(new ImageIcon(monedaD.getImage().getScaledInstance(boton8.getWidth()-15 , boton8.getHeight()-15, Image.SCALE_SMOOTH)));
         boton9.setEnabled(true);
 
+        boton10.setText("Rellenar Expendedor");
+        boton10.setBounds(490,300,60,60);
+        boton10.setEnabled(true);
+
         panel.add(boton1);
         panel.add(boton2);
         panel.add(boton3);
@@ -165,6 +172,7 @@ public class Window extends JFrame implements ActionListener {
         panel.add(boton7);
         panel.add(boton8);
         panel.add(boton9);
+        panel.add(boton10);
     }
 
     @Override
@@ -183,7 +191,7 @@ public class Window extends JFrame implements ActionListener {
             opcion = 2;
         }
         if (e.getSource() == boton5) {
-            System.out.println("Estamos trabajando para entregar vuelto, vuelva más tarde.");
+            System.out.println("tu vuelto es:"+exp_principal.Vuelto());
         }
         if(e.getSource() == boton6){
             moneda_seleccionada = new Moneda100();
@@ -205,6 +213,12 @@ public class Window extends JFrame implements ActionListener {
             System.out.println("Pagaras con 1500");
             moneda_selected.setText(" MONEDA SELECCIONADA: 1500");
         }
+        if(e.getSource() == boton10 ){
+            System.out.println("Rellenando");
+            exp_principal=null;
+            exp_principal=new Expendedor(6, 800, panel);
+            repaint();
+        }
         if (e.getSource() == boton4) {
             if(moneda_seleccionada!=null){
                 if(moneda_seleccionada.getValor()>800){
@@ -216,6 +230,8 @@ public class Window extends JFrame implements ActionListener {
                             try {
                                 System.out.println("Recibiendo Coca");
                                 exp_principal.comprarBebida(moneda_seleccionada, opcion);
+                                moneda_seleccionada=null;
+                                moneda_selected.setText(" MONEDA SELECCIONADA:");
                             } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayBebidaException e1) {
                                 // TODO Auto-generated catch block
                                 e1.printStackTrace();
@@ -227,6 +243,8 @@ public class Window extends JFrame implements ActionListener {
                             try {
                                 System.out.println("Recibiendo Fanta");
                                 exp_principal.comprarBebida(moneda_seleccionada, opcion);
+                                moneda_seleccionada=null;
+                                moneda_selected.setText(" MONEDA SELECCIONADA:");
                             } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayBebidaException e1) {
                                 // TODO Auto-generated catch block
                                 e1.printStackTrace();
@@ -238,6 +256,8 @@ public class Window extends JFrame implements ActionListener {
                             try {
                                 System.out.println("Recibiendo Sprite");
                                 exp_principal.comprarBebida(moneda_seleccionada, opcion);
+                                moneda_seleccionada=null;
+                                moneda_selected.setText(" MONEDA SELECCIONADA:");
                             } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayBebidaException e1) {
                                 // TODO Auto-generated catch block
                                 e1.printStackTrace();

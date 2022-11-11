@@ -17,6 +17,7 @@ class Expendedor extends JPanel {
     private Moneda Pago;
     private Bebida gaseosa;
     private int posicionB;
+    private int posicionA;
     
 
     public Expendedor(int numBebidas, int valorBebidas, JPanel panel) {
@@ -33,6 +34,7 @@ class Expendedor extends JPanel {
             numBebidas = 6;
         }
         posicionB = 110;
+        posicionA = 0;
         //Creacion de bebidas dependiendo de la cantidad establecida 
         //mediante un ciclo que les asigna un numero de serie
         for (int i = 0; i < cantidadBebidas; i++) {
@@ -63,7 +65,8 @@ class Expendedor extends JPanel {
                         }
                         Bebida aux2 = CocaCola.getBebida(dep1);
                         CocaCola.getBebida(dep1).mover();
-                        BorradorBebidas a = new BorradorBebidas(CocaCola.getBebida(dep1).etiqueta(), CocaCola.getBebida(dep1).getSerie());
+                        BorradorBebidas a = new BorradorBebidas(CocaCola.getBebida(dep1).etiqueta(), CocaCola.getBebida(dep1).getSerie(),posicionA);
+                        posicionA = posicionA + 40;
                         if (aux2 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");
@@ -78,7 +81,8 @@ class Expendedor extends JPanel {
                         }
                         Bebida aux3 = Sprite.getBebida(dep2);
                         Sprite.getBebida(dep2).mover();
-                        BorradorBebidas b = new BorradorBebidas(Sprite.getBebida(dep2).etiqueta(), Sprite.getBebida(dep2).getSerie());
+                        BorradorBebidas b = new BorradorBebidas(Sprite.getBebida(dep2).etiqueta(), Sprite.getBebida(dep2).getSerie(),posicionA);
+                        posicionA = posicionA + 40;
                         if (aux3 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");
@@ -94,7 +98,8 @@ class Expendedor extends JPanel {
                         }
                         Bebida aux4 = Fanta.getBebida(dep3);
                         Fanta.getBebida(dep3).mover();
-                        BorradorBebidas c = new BorradorBebidas(Fanta.getBebida(dep3).etiqueta(), Fanta.getBebida(dep3).getSerie());
+                        BorradorBebidas c = new BorradorBebidas(Fanta.getBebida(dep3).etiqueta(), Fanta.getBebida(dep3).getSerie(),posicionA);
+                        posicionA = posicionA + 40;
                         if (aux4 == null) {
                             aux_Bebida = Pago.getValor();
                             throw new NoHayBebidaException("No hay bebidas disponibles");

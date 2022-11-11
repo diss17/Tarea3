@@ -1,22 +1,17 @@
 package tarea03;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-
-public class BorradorBebidas extends JLabel implements MouseListener, MouseMotionListener {
+public class Reposicion  extends JLabel implements MouseListener, MouseMotionListener {
 
     JLabel objetivo;
     int serial;
     private int X, Y;
 
-    public BorradorBebidas(JLabel a, int serie,int y) {
-        X = 0;
-        this.Y = y;
+    public Reposicion(JLabel a) {
         this.objetivo = a;
-        this.serial = serie;
         a.addMouseListener(this);
         a.addMouseMotionListener(this);
     }
@@ -35,19 +30,17 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
     @Override
     public void mouseClicked(MouseEvent e) {
         objetivo.setVisible(false);
-        objetivo.setLocation(780+Y, 50); 
-        objetivo.setVisible(true); 
-                                                           
+        objetivo.setBounds(780+40, 50, 55, 55); 
+        objetivo.setVisible(true);                                                          
     }
 
     @Override
     public void mousePressed(MouseEvent event) {
-    
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
     }
 
     @Override
@@ -60,3 +53,4 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
     }
 
 }
+

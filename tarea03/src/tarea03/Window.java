@@ -179,7 +179,7 @@ public class Window extends JFrame implements ActionListener {
         //Boton que al presionar el expendedor, éste se rellene con bebidas.
         boton10.setContentAreaFilled(false);
         boton10.setBorderPainted(false);
-        boton10.setBounds(99, 13, 370, 515);
+        boton10.setBounds(130, 96, 218, 430);
         boton10.setEnabled(true);
 
         panel.add(boton1);

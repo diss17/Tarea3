@@ -3,6 +3,8 @@ package tarea03;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
@@ -16,13 +18,12 @@ public class Window extends JFrame implements ActionListener {
     JLabel moneda_selected;
     JLabel mensajePagar;
     JLabel expendedor;
-    JLabel background;
     Label Cambio;
     JButton boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton10;
     Moneda moneda_seleccionada;
-    BorradorBebidas r;
-    Bebida x;
     Deposito Sprite = new Deposito();
+    Bebida aux;
+    int cantidad;
     private int opcion;
 
     public Window() {
@@ -52,21 +53,13 @@ public class Window extends JFrame implements ActionListener {
         Bebida_selected = new JLabel();
         moneda_selected = new JLabel();
         expendedor = new JLabel();
-        background = new JLabel();
         exp_principal = new Expendedor(6, 800, panel);
         cliente_principal = new Comprador(moneda_seleccionada, opcion, exp_principal);
 
-        ImageIcon back = new ImageIcon("background.png");
-        background.setBounds(0, 0, 1200, 700);
-        background.setIcon(new ImageIcon(back.getImage().getScaledInstance(1200, 700, Image.SCALE_SMOOTH)));
-        panel.add(background);
-        panel.setComponentZOrder(background, 28);
-
-        ImageIcon exp = new ImageIcon("expFinal.png");
+        ImageIcon exp = new ImageIcon("FONDO_FINAL.png");
         expendedor.setBounds(-10, -20, 1200, 700);
         expendedor.setIcon(new ImageIcon(exp.getImage().getScaledInstance(1200, 700, Image.SCALE_SMOOTH)));
         panel.add(expendedor);
-        panel.setComponentZOrder(expendedor, 27);
 
         Bebida_selected.setBounds(480, 14, 240, 35);
         Bebida_selected.setOpaque(true);
@@ -74,14 +67,15 @@ public class Window extends JFrame implements ActionListener {
         Bebida_selected.setText(" BEBIDA SELECCIONADA:");
         Bebida_selected.setFont(new Font("Rockwell", Font.BOLD, 12));
         panel.add(Bebida_selected);
-        panel.setComponentZOrder(Bebida_selected, 27);
+        panel.setComponentZOrder(Bebida_selected, 0);
+
         moneda_selected.setBounds(480, 40, 240, 30);
         moneda_selected.setOpaque(true);
         moneda_selected.setBackground(null);
         moneda_selected.setText(" MONEDA SELECCIONADA:");
         moneda_selected.setFont(new Font("Rockwell", Font.BOLD, 12));
         panel.add(moneda_selected);
-        panel.setComponentZOrder(moneda_selected, 27);
+        panel.setComponentZOrder(moneda_selected, 0);
 
     }
 
@@ -200,6 +194,39 @@ public class Window extends JFrame implements ActionListener {
         panel.add(boton10);
     }
 
+    public void testExpendedor() throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException {
+        if (moneda_seleccionada != null) {
+            if (moneda_seleccionada.getValor() > 800) {
+                switch (opcion) {
+                    case 1:
+                        System.out.println("Recibiendo Coca");
+                        moneda_selected.setText(" MONEDA SELECCIONADA:");
+                        exp_principal.comprarBebida(moneda_seleccionada, opcion);
+                        break;
+
+                    case 3:
+                        System.out.println("Recibiendo Fanta");
+                        moneda_selected.setText(" MONEDA SELECCIONADA:");
+                        exp_principal.comprarBebida(moneda_seleccionada, opcion);
+                        break;
+
+                    case 2:
+                        System.out.println("Recibiendo Sprite");
+                        moneda_selected.setText(" MONEDA SELECCIONADA:");
+                        exp_principal.comprarBebida(moneda_seleccionada, opcion);
+                        break;
+                    default:
+                        System.out.println("Seleccione una bebida");
+                        break;
+                }
+            } else {
+                throw new PagoInsuficienteException("Pago Insuficiente");
+            }
+        } else {
+            throw new PagoIncorrectoException("No tienes ninguna moneda seleccionada");
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == boton1) {
@@ -242,57 +269,18 @@ public class Window extends JFrame implements ActionListener {
             System.out.println("Rellenando");
             exp_principal = new Expendedor(6, 800, panel);
             repaint();
+
         }
         if (e.getSource() == boton4) {
-            if (moneda_seleccionada != null) {
-                if (moneda_seleccionada.getValor() > 800) {
-                    switch (opcion) {
-                        case 1:
-                            System.out.println("Recibiendo Coca");
-                            moneda_selected.setText(" MONEDA SELECCIONADA:");
-                            try {
-                                exp_principal.comprarBebida(moneda_seleccionada, opcion);
-                                moneda_seleccionada = null;
-                            } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayBebidaException e1) {
-                                // TODO Auto-generated catch block
-                                e1.printStackTrace();
-                            }
-                            break;
-
-                        case 3:
-                            System.out.println("Recibiendo Fanta");
-                            moneda_selected.setText(" MONEDA SELECCIONADA:");
-                            try {
-                                exp_principal.comprarBebida(moneda_seleccionada, opcion);
-                                moneda_seleccionada = null;
-                            } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayBebidaException e1) {
-                                // TODO Auto-generated catch block
-                                e1.printStackTrace();
-                            }
-                            break;
-
-                        case 2:
-                            System.out.println("Recibiendo Sprite");
-                            moneda_selected.setText(" MONEDA SELECCIONADA:");
-                            try {
-                                exp_principal.comprarBebida(moneda_seleccionada, opcion);
-                                moneda_seleccionada = null;
-                            } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayBebidaException e1) {
-                                // TODO Auto-generated catch block
-                                e1.printStackTrace();
-                            }
-                            break;
-                        default:
-                            System.out.println("Seleccione una bebida");
-                            break;
-                    }
-                } else {
-                    System.out.println("Dinero Insuficiente");
-                }
-            } else {
-                System.out.println("No tienes ninguna moneda seleccionada");
+            try {
+                testExpendedor();
+            } catch (PagoIncorrectoException ex) {
+                System.out.println(ex.getMessage());
+            } catch (PagoInsuficienteException ex) {
+                System.out.println(ex.getMessage());
+            } catch (NoHayBebidaException ex) {
+                System.out.println(ex.getMessage());
             }
         }
-
     }
 }

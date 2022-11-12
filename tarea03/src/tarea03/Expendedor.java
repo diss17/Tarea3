@@ -15,7 +15,6 @@ class Expendedor extends JPanel {
     private Deposito Fanta;
     private Deposito coins;
     private Moneda Pago;
-    private Bebida gaseosa;
     private int posicionB;
     private int posicionA;
 
@@ -45,7 +44,7 @@ class Expendedor extends JPanel {
 
     }
 
-    public Bebida comprarBebida(Moneda m, int aux_b) throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException {
+    public Bebida comprarBebida(Moneda m, int aux_b) throws NoHayBebidaException {
         Pago = m;
         if (Pago != null) {
             if (Pago.getValor() >= precioBebidas) {
@@ -60,7 +59,7 @@ class Expendedor extends JPanel {
                         if (dep1 > 0) {
                             dep1 = dep1 - 1;
                         } else {
-//                            System.out.println("No hay bebidas disponibles");
+                            throw new NoHayBebidaException("No hay Bebidas Disponibles");
                         }
                         Bebida aux2 = CocaCola.getBebida(dep1);
                         CocaCola.getBebida(dep1).mover();
@@ -68,7 +67,6 @@ class Expendedor extends JPanel {
                         posicionA = posicionA + 40;
                         if (aux2 == null) {
                             aux_Bebida = Pago.getValor();
-                            throw new NoHayBebidaException("No hay bebidas disponibles");
                         } else {
                             return aux2;
                         }
@@ -76,7 +74,7 @@ class Expendedor extends JPanel {
                         if (dep2 > 0) {
                             dep2 = dep2 - 1;
                         } else {
-                            System.out.println("No hay bebidas disponibles");
+                            throw new NoHayBebidaException("No hay Bebidas Disponibles");
                         }
                         Bebida aux3 = Sprite.getBebida(dep2);
                         Sprite.getBebida(dep2).mover();
@@ -84,7 +82,7 @@ class Expendedor extends JPanel {
                         posicionA = posicionA + 40;
                         if (aux3 == null) {
                             aux_Bebida = Pago.getValor();
-                            throw new NoHayBebidaException("No hay bebidas disponibles");
+
                         } else {
                             return aux3;
                         }
@@ -93,7 +91,7 @@ class Expendedor extends JPanel {
                         if (dep3 > 0) {
                             dep3 = dep3 - 1;
                         } else {
-                            System.out.println("No hay bebidas disponibles");
+                            throw new NoHayBebidaException("No hay Bebidas Disponibles");
                         }
                         Bebida aux4 = Fanta.getBebida(dep3);
                         Fanta.getBebida(dep3).mover();
@@ -101,7 +99,6 @@ class Expendedor extends JPanel {
                         posicionA = posicionA + 40;
                         if (aux4 == null) {
                             aux_Bebida = Pago.getValor();
-                            throw new NoHayBebidaException("No hay bebidas disponibles");
                         } else {
                             return aux4;
                         }
@@ -109,19 +106,13 @@ class Expendedor extends JPanel {
                         //Si la eleccion del Comprador se sale de los margenes establecida
                         //Devuelve la moneda utilizada como tal
                         aux_Bebida = Pago.getValor();
-                        throw new NoHayBebidaException("Elección de bebida inválida");
 
                 }
-            } else {
-                //Si la moneda utilizada para realizar el pago es inferior al precio de la bebida
-                //Devuelve la moneda utilizada como tal
-                aux_Bebida = Pago.getValor();
-                throw new PagoInsuficienteException("Pago Insuficiente");
             }
         } else {
-            //Si la moneda utilizada es de tipo null
-            throw new PagoIncorrectoException("Bienvenido!!");
+            System.out.println("Bienvenido!!!");
         }
+        return null;
     }
 
     public Moneda getVuelto() {

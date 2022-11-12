@@ -18,17 +18,16 @@ class Expendedor extends JPanel {
     private Bebida gaseosa;
     private int posicionB;
     private int posicionA;
-    
 
     public Expendedor(int numBebidas, int valorBebidas, JPanel panel) {
         cantidadBebidas = numBebidas;
         precioBebidas = valorBebidas;
         CocaCola = new Deposito();
-        dep1=6;
+        dep1 = numBebidas;
         Sprite = new Deposito();
-        dep2=6;
+        dep2 = numBebidas;
         Fanta = new Deposito();
-        dep3=6;
+        dep3 = numBebidas;
         coins = new Deposito();
         if (numBebidas >= 6) {
             numBebidas = 6;
@@ -43,7 +42,7 @@ class Expendedor extends JPanel {
             Fanta.addBebida(new Fanta(posicionB, panel, 300 + i));
             posicionB = posicionB + 69;
         }
-        
+
     }
 
     public Bebida comprarBebida(Moneda m, int aux_b) throws PagoIncorrectoException, PagoInsuficienteException, NoHayBebidaException {
@@ -58,14 +57,14 @@ class Expendedor extends JPanel {
                     case 1:
                         //Cada intento de comprar una bebida pasara por este switch case el cual se encarga de verificar el tipo de bebida
                         //y ver si se encuentra disponible, sino para segun el caso lanzar un tipo de Exception con sus respectivos Output's
-                        if(dep1>0){
-                            dep1=dep1-1;
-                        }else{
-                            System.out.println("No hay bebidas disponibles");
+                        if (dep1 > 0) {
+                            dep1 = dep1 - 1;
+                        } else {
+//                            System.out.println("No hay bebidas disponibles");
                         }
                         Bebida aux2 = CocaCola.getBebida(dep1);
                         CocaCola.getBebida(dep1).mover();
-                        BorradorBebidas a = new BorradorBebidas(CocaCola.getBebida(dep1).etiqueta(), CocaCola.getBebida(dep1).getSerie(),posicionA);
+                        BorradorBebidas a = new BorradorBebidas(CocaCola.getBebida(dep1).etiqueta(), CocaCola.getBebida(dep1).getSerie(), posicionA);
                         posicionA = posicionA + 40;
                         if (aux2 == null) {
                             aux_Bebida = Pago.getValor();
@@ -74,14 +73,14 @@ class Expendedor extends JPanel {
                             return aux2;
                         }
                     case 2:
-                        if(dep2>0){
-                            dep2=dep2-1;
-                        }else{
-                            System.out.println("No hay bebidas disponibles");
+                        if (dep2 > 0) {
+                            dep2 = dep2 - 1;
+                        } else {
+                           System.out.println("No hay bebidas disponibles");
                         }
                         Bebida aux3 = Sprite.getBebida(dep2);
                         Sprite.getBebida(dep2).mover();
-                        BorradorBebidas b = new BorradorBebidas(Sprite.getBebida(dep2).etiqueta(), Sprite.getBebida(dep2).getSerie(),posicionA);
+                        BorradorBebidas b = new BorradorBebidas(Sprite.getBebida(dep2).etiqueta(), Sprite.getBebida(dep2).getSerie(), posicionA);
                         posicionA = posicionA + 40;
                         if (aux3 == null) {
                             aux_Bebida = Pago.getValor();
@@ -91,14 +90,14 @@ class Expendedor extends JPanel {
                         }
 
                     case 3:
-                        if(dep3>0){
-                            dep3=dep3-1;
-                        }else{
+                        if (dep3 > 0) {
+                            dep3 = dep3 - 1;
+                        } else {
                             System.out.println("No hay bebidas disponibles");
                         }
                         Bebida aux4 = Fanta.getBebida(dep3);
                         Fanta.getBebida(dep3).mover();
-                        BorradorBebidas c = new BorradorBebidas(Fanta.getBebida(dep3).etiqueta(), Fanta.getBebida(dep3).getSerie(),posicionA);
+                        BorradorBebidas c = new BorradorBebidas(Fanta.getBebida(dep3).etiqueta(), Fanta.getBebida(dep3).getSerie(), posicionA);
                         posicionA = posicionA + 40;
                         if (aux4 == null) {
                             aux_Bebida = Pago.getValor();

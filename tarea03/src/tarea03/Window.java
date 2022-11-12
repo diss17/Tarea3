@@ -44,6 +44,7 @@ public class Window extends JFrame implements ActionListener {
         Etiquetas();
     }
 
+
     private void Etiquetas() {
         Bebida_selected = new JLabel();
         moneda_selected = new JLabel();
@@ -94,19 +95,19 @@ public class Window extends JFrame implements ActionListener {
 
         //Botones de logo de selección de Bebidas.
         boton1.setText("COKE");
-        ImageIcon foto1 = new ImageIcon("cokeboton2.jpg");
+        ImageIcon foto1 = new ImageIcon("newBotonCoke.png");
         boton1.setBounds(360, 101, 75, 35);
         boton1.setIcon(new ImageIcon(foto1.getImage().getScaledInstance(boton1.getWidth() + 12, boton1.getHeight(), Image.SCALE_SMOOTH)));
         boton1.setEnabled(true);
 
         boton2.setText("SPRITE");
-        ImageIcon foto2 = new ImageIcon("spriteboton2.jpg");
+        ImageIcon foto2 = new ImageIcon("newBotonSprite.png");
         boton2.setBounds(360, 206, 75, 35);
         boton2.setIcon(new ImageIcon(foto2.getImage().getScaledInstance(boton2.getWidth() + 12, boton2.getHeight(), Image.SCALE_SMOOTH)));
         boton2.setEnabled(true);
 
         boton3.setText("FANTA");
-        ImageIcon foto3 = new ImageIcon("fantaboton.jpg");
+        ImageIcon foto3 = new ImageIcon("newBotonFanta.png");
         boton3.setBounds(360, 153, 75, 35);
         boton3.setIcon(new ImageIcon(foto3.getImage().getScaledInstance(boton3.getWidth() + 12, boton3.getHeight(), Image.SCALE_SMOOTH)));
         boton3.setEnabled(true);

@@ -24,15 +24,14 @@ abstract class Bebida extends JLabel {
     abstract void mover();
 
 }
-//Clases para diferenciar los tipos de Bebiba que heredan las propiedades de la clase Bebida
+//Clases para diferenciar los tipos de Bebiba que heredan las propiedades de la clase Bebida. Aqui 
+//definimos su posición en el panel y demas características de las bebidas en el expendedor.
 
 class Sprite extends Bebida {
-
     JLabel sprite = new JLabel();
-
     public Sprite(int px, JPanel panel, int s) {
         super(s);
-        ImageIcon imagen2 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/thirdjobs2(presentar)/Tarea3/tarea03/Sprite.png");
+        ImageIcon imagen2 = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/TAREA3FINAL2.0/Tarea3/tarea03/Sprite.png");
         sprite.setBounds(212, px, 55, 55);
         sprite.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         panel.add(sprite);     
@@ -56,12 +55,10 @@ class Sprite extends Bebida {
 }
 
 class CocaCola extends Bebida {
-
     JLabel cocacola = new JLabel();
-
     public CocaCola(int px, JPanel panel, int c) {
         super(c);
-        ImageIcon imagen1 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/thirdjobs2(presentar)/Tarea3/tarea03/cocacola.png");
+        ImageIcon imagen1 = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/TAREA3FINAL2.0/Tarea3/tarea03/cocacola.png");
         cocacola.setBounds(142, px, 55, 55);
         cocacola.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         panel.add(cocacola);
@@ -85,17 +82,14 @@ class CocaCola extends Bebida {
 }
 
 class Fanta extends Bebida {
-
     JLabel fanta = new JLabel();
-
     public Fanta(int px, JPanel panel, int f) {
         super(f);
 
-        ImageIcon imagen3 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/thirdjobs2(presentar)/Tarea3/tarea03/fanta.png");
+        ImageIcon imagen3 = new ImageIcon("C:/Users/franc/OneDrive/Escritorio/TAREA3FINAL2.0/Tarea3/tarea03/fanta.png");
         fanta.setBounds(282, px, 55, 55);
         fanta.setIcon(new ImageIcon(imagen3.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         panel.add(fanta);
-        
 
     }
 

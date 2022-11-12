@@ -7,7 +7,7 @@ class Expendedor extends JPanel {
     private int cantidadBebidas;
     private int precioBebidas;
     private int aux_Bebida;
-    private int dep1; 
+    private int dep1;
     private int dep2;
     private int dep3;
     private Deposito CocaCola;
@@ -76,7 +76,7 @@ class Expendedor extends JPanel {
                         if (dep2 > 0) {
                             dep2 = dep2 - 1;
                         } else {
-                           System.out.println("No hay bebidas disponibles");
+                            System.out.println("No hay bebidas disponibles");
                         }
                         Bebida aux3 = Sprite.getBebida(dep2);
                         Sprite.getBebida(dep2).mover();

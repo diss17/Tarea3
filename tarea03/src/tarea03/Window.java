@@ -1,7 +1,6 @@
 package tarea03;
 
 import java.awt.*;
-import static java.awt.PageAttributes.ColorType.COLOR;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -10,12 +9,14 @@ import javax.swing.border.LineBorder;
 public class Window extends JFrame implements ActionListener {
 
     public JPanel panel;
+    public JLayeredPane fondo;
     Expendedor exp_principal;
     Comprador cliente_principal;
     JLabel Bebida_selected;
     JLabel moneda_selected;
     JLabel mensajePagar;
     JLabel expendedor;
+    JLabel background;
     Label Cambio;
     JButton boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton10;
     Moneda moneda_seleccionada;
@@ -47,17 +48,25 @@ public class Window extends JFrame implements ActionListener {
         Etiquetas();
     }
 
-
     private void Etiquetas() {
         Bebida_selected = new JLabel();
         moneda_selected = new JLabel();
         expendedor = new JLabel();
+        background = new JLabel();
         exp_principal = new Expendedor(6, 800, panel);
         cliente_principal = new Comprador(moneda_seleccionada, opcion, exp_principal);
+
+        ImageIcon back = new ImageIcon("background.png");
+        background.setBounds(0, 0, 1200, 700);
+        background.setIcon(new ImageIcon(back.getImage().getScaledInstance(1200, 700, Image.SCALE_SMOOTH)));
+        panel.add(background);
+        panel.setComponentZOrder(background, 28);
+
         ImageIcon exp = new ImageIcon("expFinal.png");
         expendedor.setBounds(-10, -20, 1200, 700);
         expendedor.setIcon(new ImageIcon(exp.getImage().getScaledInstance(1200, 700, Image.SCALE_SMOOTH)));
         panel.add(expendedor);
+        panel.setComponentZOrder(expendedor, 27);
 
         Bebida_selected.setBounds(480, 14, 240, 35);
         Bebida_selected.setOpaque(true);
@@ -65,13 +74,14 @@ public class Window extends JFrame implements ActionListener {
         Bebida_selected.setText(" BEBIDA SELECCIONADA:");
         Bebida_selected.setFont(new Font("Rockwell", Font.BOLD, 12));
         panel.add(Bebida_selected);
-
+        panel.setComponentZOrder(Bebida_selected, 27);
         moneda_selected.setBounds(480, 40, 240, 30);
         moneda_selected.setOpaque(true);
         moneda_selected.setBackground(null);
         moneda_selected.setText(" MONEDA SELECCIONADA:");
         moneda_selected.setFont(new Font("Rockwell", Font.BOLD, 12));
         panel.add(moneda_selected);
+        panel.setComponentZOrder(moneda_selected, 27);
 
     }
 
@@ -99,7 +109,6 @@ public class Window extends JFrame implements ActionListener {
         boton10.addActionListener(this);
 
         //Botones de logo de selección de Bebidas.
-        boton1.setText("COKE");
         ImageIcon foto1 = new ImageIcon("newBotonCoke.png");
         boton1.setBounds(360, 101, 75, 37);
         boton1.setIcon(new ImageIcon(foto1.getImage().getScaledInstance(boton1.getWidth() + 16, boton1.getHeight(), Image.SCALE_SMOOTH)));
@@ -107,7 +116,6 @@ public class Window extends JFrame implements ActionListener {
         boton1.setBorder(new LineBorder(Color.RED));
         boton1.setEnabled(true);
 
-        boton2.setText("SPRITE");
         ImageIcon foto2 = new ImageIcon("newBotonSprite.png");
         boton2.setBounds(360, 206, 75, 37);
         boton2.setIcon(new ImageIcon(foto2.getImage().getScaledInstance(boton2.getWidth() + 12, boton2.getHeight(), Image.SCALE_SMOOTH)));
@@ -115,7 +123,6 @@ public class Window extends JFrame implements ActionListener {
         boton2.setBorder(new LineBorder(Color.GREEN));
         boton2.setEnabled(true);
 
-        boton3.setText("FANTA");
         ImageIcon foto3 = new ImageIcon("newBotonFanta.png");
         boton3.setBounds(360, 152, 75, 37);
         boton3.setIcon(new ImageIcon(foto3.getImage().getScaledInstance(boton3.getWidth() + 12, boton3.getHeight(), Image.SCALE_SMOOTH)));
@@ -133,14 +140,13 @@ public class Window extends JFrame implements ActionListener {
         boton4.setEnabled(true);
 
         //Boton que entrega el vuelto al hacer click.
-        ImageIcon botonVuelto=new ImageIcon("boton_vuelto.png");
+        ImageIcon botonVuelto = new ImageIcon("boton_vuelto.png");
         boton5.setIcon(new ImageIcon(botonVuelto.getImage().getScaledInstance(51, 38, Image.SCALE_SMOOTH)));
-        boton5.setBounds(398, 480, 39, 36);  
+        boton5.setBounds(398, 480, 39, 36);
         boton5.setEnabled(true);
 
         //Botones de las monedas que dan a indicar el valor con el que se paga la bebida.
         //MONEDA 100
-        boton6.setText("");
         ImageIcon monedaA = new ImageIcon("100.png");
         boton6.setBounds(490, 100, 55, 55);
         boton6.setOpaque(false);
@@ -148,9 +154,8 @@ public class Window extends JFrame implements ActionListener {
         boton6.setBorderPainted(false);
         boton6.setIcon(new ImageIcon(monedaA.getImage().getScaledInstance(boton6.getWidth() - 15, boton6.getHeight() - 15, Image.SCALE_SMOOTH)));
         boton6.setEnabled(true);
-        
+
         //MONEDA 500
-        boton7.setText("");
         ImageIcon monedaB = new ImageIcon("500.png");
         boton7.setBounds(490, 150, 55, 55);
         boton7.setOpaque(false);
@@ -160,7 +165,6 @@ public class Window extends JFrame implements ActionListener {
         boton7.setEnabled(true);
 
         //MONEDA 1000.
-        boton8.setText("");
         ImageIcon monedaC = new ImageIcon("1000.png");
         boton8.setBounds(490, 200, 55, 55);
         boton8.setOpaque(false);
@@ -170,7 +174,6 @@ public class Window extends JFrame implements ActionListener {
         boton8.setEnabled(true);
 
         //BOTON 1500.
-        boton9.setText("");
         ImageIcon monedaD = new ImageIcon("1500.png");
         boton9.setBounds(490, 250, 55, 55);
         boton9.setOpaque(false);
@@ -180,12 +183,10 @@ public class Window extends JFrame implements ActionListener {
         boton9.setEnabled(true);
 
         //Boton que al presionar el expendedor, éste se rellene con bebidas.
-        boton10.setText("");
         boton10.setContentAreaFilled(false);
         boton10.setBorderPainted(false);
         boton10.setBounds(99, 13, 370, 515);
         boton10.setEnabled(true);
-       
 
         panel.add(boton1);
         panel.add(boton2);
@@ -223,7 +224,7 @@ public class Window extends JFrame implements ActionListener {
             moneda_selected.setText(" MONEDA SELECCIONADA: 100");
         }
         if (e.getSource() == boton7) {
-            moneda_seleccionada=new Moneda500();
+            moneda_seleccionada = new Moneda500();
             System.out.println("Pagaras con 500");
             moneda_selected.setText(" MONEDA SELECCIONADA: 500");
         }
@@ -293,11 +294,5 @@ public class Window extends JFrame implements ActionListener {
             }
         }
 
-    }
-
-    public void actualizarPantalla(JLabel a) {
-        JPanel temp = (JPanel) this.getContentPane();
-        SwingUtilities.updateComponentTreeUI(temp);
-        temp.validate();
     }
 }

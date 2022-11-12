@@ -12,7 +12,7 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
     int serial;
     private int X, Y;
 
-    public BorradorBebidas(JLabel a, int serie,int y) {
+    public BorradorBebidas(JLabel a, int serie, int y) {
         X = 0;
         this.Y = y;
         this.objetivo = a;
@@ -23,7 +23,6 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
 
     @Override
     public void mouseDragged(MouseEvent event) {
-        
 
     }
 
@@ -35,19 +34,22 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
     @Override
     public void mouseClicked(MouseEvent e) {
         objetivo.setVisible(false);
-        objetivo.setLocation(780+Y, 50); 
-        objetivo.setVisible(true); 
-                                                           
+        objetivo.setLocation(780 + Y, 50);
+        objetivo.setVisible(true);
+
+        System.out.println("""
+                           Bebida retirada
+                           Serie Bebida: """ + serial);
     }
 
     @Override
     public void mousePressed(MouseEvent event) {
-    
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
     }
 
     @Override

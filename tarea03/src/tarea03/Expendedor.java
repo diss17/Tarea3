@@ -7,7 +7,7 @@ class Expendedor extends JPanel {
     private int cantidadBebidas;
     private int precioBebidas;
     private int aux_Bebida;
-    private int dep1;
+    private int dep1; 
     private int dep2;
     private int dep3;
     private Deposito CocaCola;

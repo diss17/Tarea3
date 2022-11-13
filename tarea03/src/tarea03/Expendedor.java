@@ -15,10 +15,12 @@ class Expendedor extends JPanel {
     private Deposito Fanta;
     private Deposito coins;
     private Moneda Pago;
+    JPanel panelito;
     private int posicionB;
     private int posicionA;
 
     public Expendedor(int numBebidas, int valorBebidas, JPanel panel) {
+        panelito=panel;
         cantidadBebidas = numBebidas;
         precioBebidas = valorBebidas;
         CocaCola = new Deposito();
@@ -49,7 +51,7 @@ class Expendedor extends JPanel {
         if (Pago != null) {
             if (Pago.getValor() >= precioBebidas) {
                 for (int i = 0; i < Pago.getValor(); i = i + 100) {
-                    coins.addMoneda(new Moneda100());
+                    coins.addMoneda(new Moneda100(panelito,posicionA,0,false));
                 }
                 aux_Bebida = Pago.getValor() - precioBebidas;
                 switch (aux_b) {

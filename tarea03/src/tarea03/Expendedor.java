@@ -43,7 +43,6 @@ class Expendedor extends JPanel {
             Fanta.addBebida(new Fanta(posicionB, panel, 300 + i));
             posicionB = posicionB + 69;
         }
-
     }
 
     public Bebida comprarBebida(Moneda m, int aux_b) throws NoHayBebidaException {

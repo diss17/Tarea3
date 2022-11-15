@@ -3,8 +3,6 @@ package tarea03;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
@@ -12,34 +10,33 @@ public class Window extends JFrame implements ActionListener {
 
     public JPanel panel;
     public JLayeredPane fondo;
-    Expendedor exp_principal;
-    Comprador cliente_principal;
+    Expendedor exp_principal, auxE;
+    Comprador cliente_principal, auxC;
     JLabel Bebida_selected;
     JLabel moneda_selected;
     JLabel mensajePagar;
-    JLabel expendedor;
+    JLabel expendedor, aux;
     JLabel precio;
     JLabel Cambio;
     JLabel Vuelto;
     JButton boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton10;
-    Moneda moneda_seleccionada;
-    Deposito Sprite = new Deposito();
-    Bebida aux;
+    Moneda moneda_seleccionada, auxM;
+    ;
     int cantidad;
-    private int opcion;
-    private int posi_X,posi_X2,posi_X3,posi_X4,posi_X5,posi_X6,posi_X7,posi_X8,posi_X9,posi_X10;
+    private int opcion, auxO;
+    private int posi_X, posi_X2, posi_X3, posi_X4, posi_X5, posi_X6, posi_X7, posi_X8, posi_X9, posi_X10;
 
     public Window() {
-        posi_X=0;
-        posi_X2=0;
-        posi_X3=0;
-        posi_X4=0;
-        posi_X5=0;
-        posi_X6=0;
-        posi_X7=0;
-        posi_X8=0;
-        posi_X9=0;
-        posi_X10=0;
+        posi_X = 0;
+        posi_X2 = 0;
+        posi_X3 = 0;
+        posi_X4 = 0;
+        posi_X5 = 0;
+        posi_X6 = 0;
+        posi_X7 = 0;
+        posi_X8 = 0;
+        posi_X9 = 0;
+        posi_X10 = 0;
         moneda_seleccionada = null;
         setSize(1200, 700);//Establece tamaño de la ventana
         setTitle("Expendedor de Bebidas 3000");
@@ -71,8 +68,7 @@ public class Window extends JFrame implements ActionListener {
         Cambio = new JLabel();
         exp_principal = new Expendedor(6, 800, panel);
         cliente_principal = new Comprador(moneda_seleccionada, opcion, exp_principal);
-
-        ImageIcon exp = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03FINAL/Tarea3/tarea03/FONDO_FINAL.png");
+        ImageIcon exp = new ImageIcon("FONDO_FINAL.png");
         expendedor.setBounds(-10, -20, 1200, 700);
         expendedor.setIcon(new ImageIcon(exp.getImage().getScaledInstance(1200, 700, Image.SCALE_SMOOTH)));
         panel.add(expendedor);
@@ -97,7 +93,7 @@ public class Window extends JFrame implements ActionListener {
         precio.setOpaque(true);
         precio.setBackground(null);
         precio.setText(" VALOR:");
-        precio.setFont(new Font("Rockwell",Font.BOLD,12));
+        precio.setFont(new Font("Rockwell", Font.BOLD, 12));
         panel.add(precio);
         panel.setComponentZOrder(precio, 0);
 
@@ -105,7 +101,7 @@ public class Window extends JFrame implements ActionListener {
         Cambio.setOpaque(true);
         Cambio.setBackground(null);
         Cambio.setText(" VUELTO:");
-        Cambio.setFont(new Font("Rockwell",Font.BOLD,12));
+        Cambio.setFont(new Font("Rockwell", Font.BOLD, 12));
         panel.add(Cambio);
         panel.setComponentZOrder(Cambio, 0);
 
@@ -135,21 +131,21 @@ public class Window extends JFrame implements ActionListener {
         boton10.addActionListener(this);
 
         //Botones de logo de selección de Bebidas.
-        ImageIcon foto1 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03FINAL/Tarea3/tarea03/newBotonCoke.png");
+        ImageIcon foto1 = new ImageIcon("newBotonCoke.png");
         boton1.setBounds(360, 101, 75, 37);
         boton1.setIcon(new ImageIcon(foto1.getImage().getScaledInstance(boton1.getWidth() + 16, boton1.getHeight(), Image.SCALE_SMOOTH)));
         boton1.setBorderPainted(true);
         boton1.setBorder(new LineBorder(Color.RED));
         boton1.setEnabled(true);
 
-        ImageIcon foto2 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03FINAL/Tarea3/tarea03/newBotonSprite.png");
+        ImageIcon foto2 = new ImageIcon("newBotonSprite.png");
         boton2.setBounds(360, 206, 75, 37);
         boton2.setIcon(new ImageIcon(foto2.getImage().getScaledInstance(boton2.getWidth() + 12, boton2.getHeight(), Image.SCALE_SMOOTH)));
         boton2.setBorderPainted(true);
         boton2.setBorder(new LineBorder(Color.GREEN));
         boton2.setEnabled(true);
 
-        ImageIcon foto3 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03FINAL/Tarea3/tarea03/newBotonFanta.png");
+        ImageIcon foto3 = new ImageIcon("newBotonFanta.png");
         boton3.setBounds(360, 152, 75, 37);
         boton3.setIcon(new ImageIcon(foto3.getImage().getScaledInstance(boton3.getWidth() + 12, boton3.getHeight(), Image.SCALE_SMOOTH)));
         boton3.setBorderPainted(true);
@@ -166,14 +162,14 @@ public class Window extends JFrame implements ActionListener {
         boton4.setEnabled(true);
 
         //Boton que entrega el vuelto al hacer click.
-        ImageIcon botonVuelto = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03FINAL/Tarea3/tarea03/boton_vuelto.png");
+        ImageIcon botonVuelto = new ImageIcon("boton_vuelto.png");
         boton5.setIcon(new ImageIcon(botonVuelto.getImage().getScaledInstance(51, 38, Image.SCALE_SMOOTH)));
         boton5.setBounds(398, 480, 39, 36);
         boton5.setEnabled(true);
 
         //Botones de las monedas que dan a indicar el valor con el que se paga la bebida.
         //MONEDA 100
-        ImageIcon monedaA = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03FINAL/Tarea3/tarea03/100.png");
+        ImageIcon monedaA = new ImageIcon("100.png");
         boton6.setBounds(490, 100, 55, 55);
         boton6.setOpaque(false);
         boton6.setContentAreaFilled(false);
@@ -182,7 +178,7 @@ public class Window extends JFrame implements ActionListener {
         boton6.setEnabled(true);
 
         //MONEDA 500
-        ImageIcon monedaB = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03FINAL/Tarea3/tarea03/500.png");
+        ImageIcon monedaB = new ImageIcon("500.png");
         boton7.setBounds(490, 150, 55, 55);
         boton7.setOpaque(false);
         boton7.setContentAreaFilled(false);
@@ -191,7 +187,7 @@ public class Window extends JFrame implements ActionListener {
         boton7.setEnabled(true);
 
         //MONEDA 1000.
-        ImageIcon monedaC = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03FINAL/Tarea3/tarea03/1000.png");
+        ImageIcon monedaC = new ImageIcon("1000.png");
         boton8.setBounds(490, 200, 55, 55);
         boton8.setOpaque(false);
         boton8.setContentAreaFilled(false);
@@ -200,7 +196,7 @@ public class Window extends JFrame implements ActionListener {
         boton8.setEnabled(true);
 
         //BOTON 1500.
-        ImageIcon monedaD = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03FINAL/Tarea3/tarea03/1500.png");
+        ImageIcon monedaD = new ImageIcon("1500.png");
         boton9.setBounds(490, 250, 55, 55);
         boton9.setOpaque(false);
         boton9.setContentAreaFilled(false);
@@ -232,21 +228,21 @@ public class Window extends JFrame implements ActionListener {
                 switch (opcion) {
                     case 1:
                         System.out.println("Recibiendo Coca");
-                        Cambio.setText(" VUELTO: "+"$"+(moneda_seleccionada.getValor()-800));
+                        Cambio.setText(" VUELTO: " + "$" + (moneda_seleccionada.getValor() - 800));
                         moneda_selected.setText(" MONEDA SELECCIONADA:");
                         exp_principal.comprarBebida(moneda_seleccionada, opcion);
                         break;
 
                     case 3:
                         System.out.println("Recibiendo Fanta");
-                        Cambio.setText(" VUELTO: "+"$"+(moneda_seleccionada.getValor()-800));
+                        Cambio.setText(" VUELTO: " + "$" + (moneda_seleccionada.getValor() - 800));
                         moneda_selected.setText(" MONEDA SELECCIONADA:");
                         exp_principal.comprarBebida(moneda_seleccionada, opcion);
                         break;
 
                     case 2:
                         System.out.println("Recibiendo Sprite");
-                        Cambio.setText(" VUELTO: "+"$"+(moneda_seleccionada.getValor()-800));
+                        Cambio.setText(" VUELTO: " + "$" + (moneda_seleccionada.getValor() - 800));
                         moneda_selected.setText(" MONEDA SELECCIONADA:");
                         exp_principal.comprarBebida(moneda_seleccionada, opcion);
                         break;
@@ -281,56 +277,56 @@ public class Window extends JFrame implements ActionListener {
             opcion = 2;
         }
         if (e.getSource() == boton5) {
-            if(exp_principal.Vuelto()>0){
-                System.out.println("Agarraste $100,En el Expendedor quedan: " +"$"+ (exp_principal.Vuelto()-100));
-                if(posi_X<160){
+            if (exp_principal.Vuelto() > 0) {
+                System.out.println("Agarraste $100,En el Expendedor quedan: " + "$" + (exp_principal.Vuelto() - 100));
+                if (posi_X < 160) {
                     exp_principal.getVuelto();
-                    Moneda helpin = new Moneda100(panel, posi_X,0, true);
+                    Moneda helpin = new Moneda100(panel, posi_X, 0, true);
                     repaint();
-                    posi_X=posi_X+20;
-                }else{
-                    if(posi_X2<160){
+                    posi_X = posi_X + 20;
+                } else {
+                    if (posi_X2 < 160) {
                         exp_principal.getVuelto();
-                        Moneda helpin = new Moneda100(panel, posi_X2,+40, true);
+                        Moneda helpin = new Moneda100(panel, posi_X2, +40, true);
                         repaint();
                         posi_X2 = posi_X2 + 20;
-                    }else{
-                        if(posi_X3<160){
-                        exp_principal.getVuelto();
-                        Moneda helpin = new Moneda100(panel, posi_X3,+80, true);
-                        repaint();
-                        posi_X3 = posi_X3 + 20;
-                        }else{
-                            if(posi_X4<160){
+                    } else {
+                        if (posi_X3 < 160) {
+                            exp_principal.getVuelto();
+                            Moneda helpin = new Moneda100(panel, posi_X3, +80, true);
+                            repaint();
+                            posi_X3 = posi_X3 + 20;
+                        } else {
+                            if (posi_X4 < 160) {
                                 exp_principal.getVuelto();
-                                Moneda helpin = new Moneda100(panel, posi_X4,+120, true);
+                                Moneda helpin = new Moneda100(panel, posi_X4, +120, true);
                                 repaint();
                                 posi_X4 = posi_X4 + 20;
-                            }else{
-                                if(posi_X5<160){
+                            } else {
+                                if (posi_X5 < 160) {
                                     exp_principal.getVuelto();
-                                    Moneda helpin = new Moneda100(panel, posi_X5,+160, true);
+                                    Moneda helpin = new Moneda100(panel, posi_X5, +160, true);
                                     repaint();
                                     posi_X5 = posi_X5 + 20;
-                                }else{
-                                    if(posi_X6<160){
+                                } else {
+                                    if (posi_X6 < 160) {
                                         exp_principal.getVuelto();
-                                        Moneda helpin = new Moneda100(panel, posi_X6,+200, true);
+                                        Moneda helpin = new Moneda100(panel, posi_X6, +200, true);
                                         repaint();
                                         posi_X6 = posi_X6 + 20;
-                                    }else{
-                                        if(posi_X7<160){
+                                    } else {
+                                        if (posi_X7 < 160) {
                                             exp_principal.getVuelto();
-                                            Moneda helpin = new Moneda100(panel, posi_X7,+240, true);
+                                            Moneda helpin = new Moneda100(panel, posi_X7, +240, true);
                                             repaint();
                                             posi_X7 = posi_X7 + 20;
-                                        }else{
-                                            if(posi_X8<160){
+                                        } else {
+                                            if (posi_X8 < 160) {
                                                 exp_principal.getVuelto();
-                                                Moneda helpin = new Moneda100(panel, posi_X8,+280, true);
+                                                Moneda helpin = new Moneda100(panel, posi_X8, +280, true);
                                                 repaint();
                                                 posi_X8 = posi_X8 + 20;
-                                            }else{
+                                            } else {
                                                 JLabel advert = new JLabel();
                                                 advert.setText("no tienes mas espacio en tu monedero");
                                                 advert.setBounds(480, 70, 100, 20);
@@ -342,12 +338,12 @@ public class Window extends JFrame implements ActionListener {
                         }
                     }
                 }
-            }else{
+            } else {
                 System.out.println("no queda mas vuelto para entregar");
             }
         }
         if (e.getSource() == boton6) {
-            moneda_seleccionada = new Moneda100(panel,0,0,false);
+            moneda_seleccionada = new Moneda100(panel, 0, 0, false);
             System.out.println("Pagaras con $100");
             moneda_selected.setText(" MONEDA SELECCIONADA: $100");
         }
@@ -369,20 +365,19 @@ public class Window extends JFrame implements ActionListener {
         if (e.getSource() == boton10) {
             System.out.println("Rellenando");
             exp_principal = new Expendedor(6, 800, panel);
+//            auxE = new Expendedor(6, 800, panel);
+//            auxC = new Comprador(moneda_seleccionada, auxO, auxE);
+
             repaint();
         }
         if (e.getSource() == boton4) {
-            if(exp_principal.Vuelto()==0){
+            if (exp_principal.Vuelto() == 0) {
                 try {
                     testExpendedor();
-                } catch (PagoIncorrectoException ex) {
-                    System.out.println(ex.getMessage());
-                } catch (PagoInsuficienteException ex) {
-                    System.out.println(ex.getMessage());
-                } catch (NoHayBebidaException ex) {
+                } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayBebidaException ex) {
                     System.out.println(ex.getMessage());
                 }
-            }else{
+            } else {
                 System.out.println();
                 System.out.println("AVISO: debes sacar la bebida y su vuelto para comprar denuevo");
                 System.out.println();

@@ -21,6 +21,7 @@ class Deposito {
             return null;
         } else {           
             Bebida a = (Bebida) b.get(x);
+            b.remove(x);
             return a;
         }
     }

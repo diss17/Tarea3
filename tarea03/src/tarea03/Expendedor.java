@@ -14,13 +14,15 @@ class Expendedor extends JPanel {
     private Deposito Sprite;
     private Deposito Fanta;
     private Deposito coins;
+    Bebida aux2, aux3, aux4;
+
     private Moneda Pago;
     JPanel panelito;
     private int posicionB;
     private int posicionA;
 
     public Expendedor(int numBebidas, int valorBebidas, JPanel panel) {
-        panelito=panel;
+        panelito = panel;
         cantidadBebidas = numBebidas;
         precioBebidas = valorBebidas;
         CocaCola = new Deposito();
@@ -33,7 +35,7 @@ class Expendedor extends JPanel {
         if (numBebidas >= 6) {
             numBebidas = 6;
         }
-        posicionB = 110;
+        posicionB = 460;
         posicionA = 0;
         //Creacion de bebidas dependiendo de la cantidad establecida 
         //mediante un ciclo que les asigna un numero de serie
@@ -41,7 +43,7 @@ class Expendedor extends JPanel {
             CocaCola.addBebida(new CocaCola(posicionB, panel, 100 + i));
             Sprite.addBebida(new Sprite(posicionB, panel, 200 + i));
             Fanta.addBebida(new Fanta(posicionB, panel, 300 + i));
-            posicionB = posicionB + 69;
+            posicionB = posicionB - 69;
         }
     }
 
@@ -50,7 +52,7 @@ class Expendedor extends JPanel {
         if (Pago != null) {
             if (Pago.getValor() >= precioBebidas) {
                 for (int i = 0; i < Pago.getValor(); i = i + 100) {
-                    coins.addMoneda(new Moneda100(panelito,posicionA,0,false));
+                    coins.addMoneda(new Moneda100(panelito, posicionA, 0, false));
                 }
                 aux_Bebida = Pago.getValor() - precioBebidas;
                 switch (aux_b) {
@@ -60,49 +62,40 @@ class Expendedor extends JPanel {
                         if (dep1 > 0) {
                             dep1 = dep1 - 1;
                         } else {
+                            aux_Bebida = 0;
                             throw new NoHayBebidaException("No hay Bebidas Disponibles");
                         }
-                        Bebida aux2 = CocaCola.getBebida(dep1);
-                        CocaCola.getBebida(dep1).mover();
-                        BorradorBebidas a = new BorradorBebidas(CocaCola.getBebida(dep1).etiqueta(), CocaCola.getBebida(dep1).getSerie(), posicionA);
+
+                        aux2 = CocaCola.getBebida(0);
+                        BorradorBebidas a = new BorradorBebidas(aux2.etiqueta(), aux2.getSerie(), posicionA);
                         posicionA = posicionA + 40;
-                        if (aux2 == null) {
-                            aux_Bebida = Pago.getValor();
-                        } else {
-                            return aux2;
-                        }
+                        aux2.mover();
+                        return aux2;
                     case 2:
                         if (dep2 > 0) {
                             dep2 = dep2 - 1;
                         } else {
+                            aux_Bebida = 0;
                             throw new NoHayBebidaException("No hay Bebidas Disponibles");
                         }
-                        Bebida aux3 = Sprite.getBebida(dep2);
-                        Sprite.getBebida(dep2).mover();
-                        BorradorBebidas b = new BorradorBebidas(Sprite.getBebida(dep2).etiqueta(), Sprite.getBebida(dep2).getSerie(), posicionA);
+                        aux3 = Sprite.getBebida(0);
+                        aux3.mover();
+                        BorradorBebidas b = new BorradorBebidas(aux3.etiqueta(), aux3.getSerie(), posicionA);
                         posicionA = posicionA + 40;
-                        if (aux3 == null) {
-                            aux_Bebida = Pago.getValor();
-
-                        } else {
-                            return aux3;
-                        }
+                        return aux3;
 
                     case 3:
                         if (dep3 > 0) {
                             dep3 = dep3 - 1;
                         } else {
+                            aux_Bebida = 0;
                             throw new NoHayBebidaException("No hay Bebidas Disponibles");
                         }
-                        Bebida aux4 = Fanta.getBebida(dep3);
-                        Fanta.getBebida(dep3).mover();
-                        BorradorBebidas c = new BorradorBebidas(Fanta.getBebida(dep3).etiqueta(), Fanta.getBebida(dep3).getSerie(), posicionA);
+                        aux4 = Fanta.getBebida(0);
+                        aux4.mover();
+                        BorradorBebidas c = new BorradorBebidas(aux4.etiqueta(), aux4.getSerie(), posicionA);
                         posicionA = posicionA + 40;
-                        if (aux4 == null) {
-                            aux_Bebida = Pago.getValor();
-                        } else {
-                            return aux4;
-                        }
+                        return aux4;
                     default:
                         //Si la eleccion del Comprador se sale de los margenes establecida
                         //Devuelve la moneda utilizada como tal
@@ -137,5 +130,7 @@ class Expendedor extends JPanel {
         int vuelto = aux_Bebida;
         return (vuelto);
     }
-
+    public void rellenar(JLabel a){
+        a.setVisible(false);
+    }
 }

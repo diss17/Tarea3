@@ -103,7 +103,7 @@ class Moneda100 extends Moneda {
 
     public Moneda100(JPanel panel,int px,int py,boolean vof) {
         super();
-        ImageIcon imagen1 = new ImageIcon("100.png");
+        ImageIcon imagen1 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/100.png");
         change.setBounds(935+px, 300+py, 40, 40);
         change.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
         change.setVisible(vof);

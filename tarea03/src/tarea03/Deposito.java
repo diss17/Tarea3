@@ -2,6 +2,8 @@ package tarea03;
 
 import java.util.ArrayList;
 
+import javax.swing.JPanel;
+
 class Deposito {
     //Arraylist que se encargan de añadir o quitar elementos tipo moneda o bebida segun corresponda
     private ArrayList b;
@@ -21,13 +23,19 @@ class Deposito {
             return null;
         } else {           
             Bebida a = (Bebida) b.get(x);
+            b.get(x);
             b.remove(x);
             return a;
         }
     }
-    public void actualizarlo(int x){
-        for(int i=0;i<x;i++){
-            b.set(i,(Bebida) b.get(i+1));
+    public void rellenado(int x,JPanel panel){
+        while(b.size()<6){
+            addBebida(new CocaCola(x-69*b.size(),panel, CocaCola.contador));
+        }
+    }
+    public void actualizarlo(){
+        for(int i=0;i<b.size();i++){
+            ((CocaCola) b.get(i)).updatelabel(i);
         }
     }
 

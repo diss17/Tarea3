@@ -40,10 +40,11 @@ class Expendedor extends JPanel {
         //Creacion de bebidas dependiendo de la cantidad establecida 
         //mediante un ciclo que les asigna un numero de serie
         for (int i = 0; i < cantidadBebidas; i++) {
-            CocaCola.addBebida(new CocaCola(posicionB, panel, 100 + i));
+            CocaCola.addBebida(new CocaCola(posicionB, panel, 100+Bebida.contador));
             Sprite.addBebida(new Sprite(posicionB, panel, 200 + i));
             Fanta.addBebida(new Fanta(posicionB, panel, 300 + i));
             posicionB = posicionB - 69;
+            Bebida.contador++;
         }
     }
 
@@ -67,6 +68,7 @@ class Expendedor extends JPanel {
                         }
 
                         aux2 = CocaCola.getBebida(0);
+                        CocaCola.actualizarlo();
                         BorradorBebidas a = new BorradorBebidas(aux2.etiqueta(), aux2.getSerie(), posicionA);
                         posicionA = posicionA + 40;
                         aux2.mover();
@@ -130,7 +132,9 @@ class Expendedor extends JPanel {
         int vuelto = aux_Bebida;
         return (vuelto);
     }
-    public void rellenar(JLabel a){
-        a.setVisible(false);
+    public void rellenar(){
+        dep1=6;
+        posicionB=460;
+        CocaCola.rellenado(posicionB,panelito);
     }
 }

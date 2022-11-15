@@ -3,8 +3,8 @@ package tarea03;
 import java.awt.*;
 import javax.swing.*;
 
-abstract class Bebida extends JLabel {
-
+public abstract class Bebida extends JLabel {
+    public static int contador = 0;
     public abstract JLabel etiqueta();
     private int num;
 
@@ -33,7 +33,7 @@ class Sprite extends Bebida {
 
     public Sprite(int px, JPanel panel, int s) {
         super(s);
-        ImageIcon imagen2 = new ImageIcon("Sprite.png");
+        ImageIcon imagen2 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/Sprite.png");
         sprite.setBounds(212, px, 55, 55);
         sprite.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         panel.add(sprite);
@@ -59,15 +59,19 @@ class Sprite extends Bebida {
 
 class CocaCola extends Bebida {
 
+    
     JLabel cocacola = new JLabel();
 
     public CocaCola(int px, JPanel panel, int c) {
         super(c);
-        ImageIcon imagen1 = new ImageIcon("cocacola.png");
+        ImageIcon imagen1 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/cocacola.png");
         cocacola.setBounds(142, px, 55, 55);
         cocacola.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         panel.add(cocacola);
         panel.setComponentZOrder(cocacola, 0);
+    }
+    public void updatelabel(int i){
+        cocacola.setLocation(142, 460-69*i);
     }
 
     @Override
@@ -92,12 +96,11 @@ class Fanta extends Bebida {
 
     public Fanta(int px, JPanel panel, int f) {
         super(f);
-        ImageIcon imagen3 = new ImageIcon("fanta.png");
+        ImageIcon imagen3 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/fanta.png");
         fanta.setBounds(282, px, 55, 55);
         fanta.setIcon(new ImageIcon(imagen3.getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH)));
         panel.add(fanta);
         panel.setComponentZOrder(fanta, 0);
-        RellenarExp exp = new RellenarExp(fanta);
     }
 
     @Override

@@ -16,7 +16,6 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
         X = 0;
         this.Y = y;
         this.objetivo = a;
-        System.out.println(Y);
         this.serial = serie;
         a.addMouseListener(this);
         a.addMouseMotionListener(this);

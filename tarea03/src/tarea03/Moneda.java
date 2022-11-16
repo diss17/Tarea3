@@ -1,8 +1,6 @@
 package tarea03;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 import java.awt.*;
 
 abstract class Moneda extends JLabel {
@@ -101,10 +99,10 @@ class Moneda100 extends Moneda {
 
     JLabel change = new JLabel();
 
-    public Moneda100(JPanel panel,int px,int py,boolean vof) {
+    public Moneda100(JPanel panel, int px, int py, boolean vof) {
         super();
-        ImageIcon imagen1 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/100.png");
-        change.setBounds(935+px, 300+py, 40, 40);
+        ImageIcon imagen1 = new ImageIcon("100.png");
+        change.setBounds(935 + px, 300 + py, 40, 40);
         change.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
         change.setVisible(vof);
         panel.add(change);

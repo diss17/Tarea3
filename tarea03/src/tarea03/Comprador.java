@@ -1,8 +1,5 @@
 package tarea03;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 class Comprador {
 
     private int cantidad;

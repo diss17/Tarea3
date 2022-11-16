@@ -10,19 +10,17 @@ public class Window extends JFrame implements ActionListener {
 
     public JPanel panel;
     public JLayeredPane fondo;
-    Expendedor exp_principal, auxE;
-    Comprador cliente_principal, auxC;
+    Expendedor exp_principal;
+    Comprador cliente_principal;
     JLabel Bebida_selected;
     JLabel moneda_selected;
-    JLabel mensajePagar;
-    JLabel expendedor, aux;
+    JLabel expendedor;
     JLabel precio;
-    JLabel Cambio;
     JLabel Vuelto;
+    JLabel Cambio;
     JButton boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton10;
-    Moneda moneda_seleccionada, auxM;
+    Moneda moneda_seleccionada;
     ;
-    int cantidad;
     private int opcion, auxO;
     private int posi_X, posi_X2, posi_X3, posi_X4, posi_X5, posi_X6, posi_X7, posi_X8, posi_X9, posi_X10;
 
@@ -68,7 +66,7 @@ public class Window extends JFrame implements ActionListener {
         Cambio = new JLabel();
         exp_principal = new Expendedor(6, 800, panel);
         cliente_principal = new Comprador(moneda_seleccionada, opcion, exp_principal);
-        ImageIcon exp = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/FONDO_FINAL.png");
+        ImageIcon exp = new ImageIcon("FONDO_FINAL.png");
         expendedor.setBounds(-10, -20, 1200, 700);
         expendedor.setIcon(new ImageIcon(exp.getImage().getScaledInstance(1200, 700, Image.SCALE_SMOOTH)));
         panel.add(expendedor);
@@ -131,21 +129,21 @@ public class Window extends JFrame implements ActionListener {
         boton10.addActionListener(this);
 
         //Botones de logo de selección de Bebidas.
-        ImageIcon foto1 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/newBotonCoke.png");
+        ImageIcon foto1 = new ImageIcon("newBotonCoke.png");
         boton1.setBounds(360, 101, 75, 37);
         boton1.setIcon(new ImageIcon(foto1.getImage().getScaledInstance(boton1.getWidth() + 16, boton1.getHeight(), Image.SCALE_SMOOTH)));
         boton1.setBorderPainted(true);
         boton1.setBorder(new LineBorder(Color.RED));
         boton1.setEnabled(true);
 
-        ImageIcon foto2 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/newBotonSprite.png");
+        ImageIcon foto2 = new ImageIcon("newBotonSprite.png");
         boton2.setBounds(360, 206, 75, 37);
         boton2.setIcon(new ImageIcon(foto2.getImage().getScaledInstance(boton2.getWidth() + 12, boton2.getHeight(), Image.SCALE_SMOOTH)));
         boton2.setBorderPainted(true);
         boton2.setBorder(new LineBorder(Color.GREEN));
         boton2.setEnabled(true);
 
-        ImageIcon foto3 = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/newBotonFanta.png");
+        ImageIcon foto3 = new ImageIcon("newBotonFanta.png");
         boton3.setBounds(360, 152, 75, 37);
         boton3.setIcon(new ImageIcon(foto3.getImage().getScaledInstance(boton3.getWidth() + 12, boton3.getHeight(), Image.SCALE_SMOOTH)));
         boton3.setBorderPainted(true);
@@ -162,14 +160,14 @@ public class Window extends JFrame implements ActionListener {
         boton4.setEnabled(true);
 
         //Boton que entrega el vuelto al hacer click.
-        ImageIcon botonVuelto = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/boton_vuelto.png");
+        ImageIcon botonVuelto = new ImageIcon("boton_vuelto.png");
         boton5.setIcon(new ImageIcon(botonVuelto.getImage().getScaledInstance(51, 38, Image.SCALE_SMOOTH)));
         boton5.setBounds(398, 480, 39, 36);
         boton5.setEnabled(true);
 
         //Botones de las monedas que dan a indicar el valor con el que se paga la bebida.
         //MONEDA 100
-        ImageIcon monedaA = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/100.png");
+        ImageIcon monedaA = new ImageIcon("100.png");
         boton6.setBounds(490, 100, 55, 55);
         boton6.setOpaque(false);
         boton6.setContentAreaFilled(false);
@@ -178,7 +176,7 @@ public class Window extends JFrame implements ActionListener {
         boton6.setEnabled(true);
 
         //MONEDA 500
-        ImageIcon monedaB = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/500.png");
+        ImageIcon monedaB = new ImageIcon("500.png");
         boton7.setBounds(490, 150, 55, 55);
         boton7.setOpaque(false);
         boton7.setContentAreaFilled(false);
@@ -187,7 +185,7 @@ public class Window extends JFrame implements ActionListener {
         boton7.setEnabled(true);
 
         //MONEDA 1000.
-        ImageIcon monedaC = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/1000.png");
+        ImageIcon monedaC = new ImageIcon("1000.png");
         boton8.setBounds(490, 200, 55, 55);
         boton8.setOpaque(false);
         boton8.setContentAreaFilled(false);
@@ -196,7 +194,7 @@ public class Window extends JFrame implements ActionListener {
         boton8.setEnabled(true);
 
         //BOTON 1500.
-        ImageIcon monedaD = new ImageIcon("C:/Users/Gaspi/Desktop/Udec/Tarea03Final/Tarea3/tarea03/1500.png");
+        ImageIcon monedaD = new ImageIcon("1500.png");
         boton9.setBounds(490, 250, 55, 55);
         boton9.setOpaque(false);
         boton9.setContentAreaFilled(false);
@@ -226,29 +224,28 @@ public class Window extends JFrame implements ActionListener {
         if (moneda_seleccionada != null) {
             if (moneda_seleccionada.getValor() > 800) {
                 switch (opcion) {
-                    case 1:
+                    case 1 -> {
                         System.out.println("Recibiendo Coca");
                         Cambio.setText(" VUELTO: " + "$" + (moneda_seleccionada.getValor() - 800));
                         moneda_selected.setText(" MONEDA SELECCIONADA:");
                         exp_principal.comprarBebida(moneda_seleccionada, opcion);
-                        break;
+                    }
 
-                    case 3:
+                    case 3 -> {
                         System.out.println("Recibiendo Fanta");
                         Cambio.setText(" VUELTO: " + "$" + (moneda_seleccionada.getValor() - 800));
                         moneda_selected.setText(" MONEDA SELECCIONADA:");
                         exp_principal.comprarBebida(moneda_seleccionada, opcion);
-                        break;
+                    }
 
-                    case 2:
+                    case 2 -> {
                         System.out.println("Recibiendo Sprite");
                         Cambio.setText(" VUELTO: " + "$" + (moneda_seleccionada.getValor() - 800));
                         moneda_selected.setText(" MONEDA SELECCIONADA:");
                         exp_principal.comprarBebida(moneda_seleccionada, opcion);
-                        break;
-                    default:
+                    }
+                    default ->
                         System.out.println("Seleccione una bebida");
-                        break;
                 }
             } else {
                 throw new PagoInsuficienteException("Pago Insuficiente");

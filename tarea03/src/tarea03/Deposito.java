@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 class Deposito {
+
     //Arraylist que se encargan de añadir o quitar elementos tipo moneda o bebida segun corresponda
     private ArrayList b;
     private ArrayList m;
@@ -21,21 +22,47 @@ class Deposito {
     public Bebida getBebida(int x) {
         if (b.size() <= 0) {
             return null;
-        } else {           
+        } else {
             Bebida a = (Bebida) b.get(x);
             b.get(x);
             b.remove(x);
             return a;
         }
     }
-    public void rellenado(int x,JPanel panel){
-        while(b.size()<6){
-            addBebida(new CocaCola(x-69*b.size(),panel, CocaCola.contador));
+
+    public void rellenadoC(int x, JPanel panel) {
+        while (b.size() < 6) {
+            addBebida(new CocaCola(x - 69 * b.size(), panel, CocaCola.contador));
         }
     }
-    public void actualizarlo(){
-        for(int i=0;i<b.size();i++){
+
+    public void rellenadoS(int x, JPanel panel) {
+        while (b.size() < 6) {
+            addBebida(new Sprite(x - 69 * b.size(), panel, Sprite.contador));
+        }
+    }
+
+    public void rellenadoF(int x, JPanel panel) {
+        while (b.size() < 6) {
+            addBebida(new Fanta(x - 69 * b.size(), panel, Fanta.contador));
+        }
+    }
+
+    public void actualizarC() {
+        for (int i = 0; i < b.size(); i++) {
             ((CocaCola) b.get(i)).updatelabel(i);
+        }
+    }
+
+    public void actualizarS() {
+        for (int i = 0; i < b.size(); i++) {
+            ((Sprite) b.get(i)).updatelabel(i);
+        }
+    }
+
+    public void actualizarF() {
+        for (int i = 0; i < b.size(); i++) {
+            ((Fanta) b.get(i)).updatelabel(i);
         }
     }
 

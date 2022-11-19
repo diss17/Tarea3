@@ -30,24 +30,26 @@ class Deposito {
         }
     }
 
-    public void rellenadoC(int x, JPanel panel) {
-        while (b.size() < 6) {
-            addBebida(new CocaCola(x - 69 * b.size(), panel, CocaCola.contador));
+    //Creacion de bebidas para rellenar segun el tipo de sabor
+    public void rellenadoC(int x, JPanel panel, int cantidad) {
+        while (b.size() < cantidad) {
+            addBebida(new CocaCola(x - 69 * b.size(), panel, 100 + CocaCola.contador++));
         }
     }
 
-    public void rellenadoS(int x, JPanel panel) {
-        while (b.size() < 6) {
-            addBebida(new Sprite(x - 69 * b.size(), panel, Sprite.contador));
+    public void rellenadoS(int x, JPanel panel, int cantidad) {
+        while (b.size() < cantidad) {
+            addBebida(new Sprite(x - 69 * b.size(), panel, 200 + Sprite.contador++));
         }
     }
 
-    public void rellenadoF(int x, JPanel panel) {
-        while (b.size() < 6) {
-            addBebida(new Fanta(x - 69 * b.size(), panel, Fanta.contador));
+    public void rellenadoF(int x, JPanel panel, int cantidad) {
+        while (b.size() < cantidad) {
+            addBebida(new Fanta(x - 69 * b.size(), panel, 300 + Fanta.contador++));
         }
     }
 
+    //Metodos que se encargar de dar update al JLabel de nuestras bebidas.(etiquetas)
     public void actualizarC() {
         for (int i = 0; i < b.size(); i++) {
             ((CocaCola) b.get(i)).updatelabel(i);

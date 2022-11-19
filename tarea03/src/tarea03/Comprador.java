@@ -7,6 +7,7 @@ class Comprador {
 
     public Comprador(Moneda m, int cualBebida, Expendedor exp) {
         Bebida aux;
+        //Try and catch para testear si hay bebidas disponibles.
         try {
             aux = exp.comprarBebida(m, cualBebida);
             cantidad = exp.Vuelto();

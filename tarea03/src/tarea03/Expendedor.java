@@ -15,7 +15,6 @@ class Expendedor extends JPanel {
     private Deposito Fanta;
     private Deposito coins;
     Bebida aux2, aux3, aux4;
-
     private Moneda Pago;
     JPanel panelito;
     private int posicionB;
@@ -64,10 +63,11 @@ class Expendedor extends JPanel {
                             dep1 = dep1 - 1;
                         } else {
                             aux_Bebida = 0;
-                            throw new NoHayBebidaException("No hay Bebidas Disponibles");
                         }
-
                         aux2 = CocaCola.getBebida(0);
+                        if (aux2 == null) {
+                            throw new NoHayBebidaException("No hay bebidas disponibles");
+                        }
                         CocaCola.actualizarC();
                         BorradorBebidas a = new BorradorBebidas(aux2.etiqueta(), aux2.getSerie(), posicionA);
                         posicionA = posicionA + 40;
@@ -79,9 +79,11 @@ class Expendedor extends JPanel {
                             dep2 = dep2 - 1;
                         } else {
                             aux_Bebida = 0;
-                            throw new NoHayBebidaException("No hay Bebidas Disponibles");
                         }
                         aux3 = Sprite.getBebida(0);
+                        if (aux3 == null) {
+                            throw new NoHayBebidaException("No hay bebidas disponibles");
+                        }
                         Sprite.actualizarS();
                         BorradorBebidas b = new BorradorBebidas(aux3.etiqueta(), aux3.getSerie(), posicionA);
                         posicionA = posicionA + 40;
@@ -94,9 +96,11 @@ class Expendedor extends JPanel {
                             dep3 = dep3 - 1;
                         } else {
                             aux_Bebida = 0;
-                            throw new NoHayBebidaException("No hay Bebidas Disponibles");
                         }
                         aux4 = Fanta.getBebida(0);
+                        if (aux4 == null) {
+                            throw new NoHayBebidaException("No hay bebidas disponibles");
+                        }
                         Fanta.actualizarF();
                         BorradorBebidas c = new BorradorBebidas(aux4.etiqueta(), aux4.getSerie(), posicionA);
                         posicionA = posicionA + 40;
@@ -138,10 +142,11 @@ class Expendedor extends JPanel {
     }
 
     public void rellenar() {
+        //Metodo utilizado para rellenar bebidas 
         dep1 = 6;
         posicionB = 460;
-        CocaCola.rellenadoC(posicionB, panelito);
-        Sprite.rellenadoS(posicionB, panelito);
-        Fanta.rellenadoF(posicionB, panelito);
+        CocaCola.rellenadoC(posicionB, panelito, cantidadBebidas);
+        Sprite.rellenadoS(posicionB, panelito, cantidadBebidas);
+        Fanta.rellenadoF(posicionB, panelito, cantidadBebidas);
     }
 }

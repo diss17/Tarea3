@@ -10,10 +10,9 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
 
     JLabel objetivo;
     int serial;
-    private int X, Y;
+    private int Y;
 
     public BorradorBebidas(JLabel a, int serie, int y) {
-        X = 0;
         this.Y = y;
         this.objetivo = a;
         this.serial = serie;
@@ -41,8 +40,8 @@ public class BorradorBebidas extends JLabel implements MouseListener, MouseMotio
                                Bebida retirada
                                Serie Bebida: """ + serial);
         } else {
+            System.out.println("Inventario Lleno, vuelva mas tarde");
             objetivo.setVisible(false);
-            System.out.println("Inventario Lleno,te tomas le bebida");
         }
     }
 

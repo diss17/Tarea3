@@ -16,12 +16,11 @@ public class Window extends JFrame implements ActionListener {
     JLabel moneda_selected;
     JLabel expendedor;
     JLabel precio;
-    JLabel Vuelto;
     JLabel Cambio;
     JButton boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9, boton10;
     Moneda moneda_seleccionada;
     ;
-    private int opcion, auxO;
+    private int opcion;
     private int posi_X, posi_X2, posi_X3, posi_X4, posi_X5, posi_X6, posi_X7, posi_X8, posi_X9, posi_X10;
 
     public Window() {
@@ -39,6 +38,7 @@ public class Window extends JFrame implements ActionListener {
         setSize(1200, 700);//Establece tamaño de la ventana
         setTitle("Expendedor de Bebidas 3000");
         setLocationRelativeTo(null);//Establece posicion de la ventana
+        setResizable(false);
         IniciarVentana();
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -58,12 +58,13 @@ public class Window extends JFrame implements ActionListener {
     }
 
     private void Etiquetas() {
+        //Inicializacion de etiquetas que son agregas a nuestro panel principal
         Bebida_selected = new JLabel();
         moneda_selected = new JLabel();
         precio = new JLabel();
         expendedor = new JLabel();
-        Vuelto = new JLabel();
         Cambio = new JLabel();
+
         exp_principal = new Expendedor(6, 800, panel);
         cliente_principal = new Comprador(moneda_seleccionada, opcion, exp_principal);
         ImageIcon exp = new ImageIcon("FONDO_FINAL.png");
@@ -248,7 +249,7 @@ public class Window extends JFrame implements ActionListener {
                         System.out.println("Seleccione una bebida");
                 }
             } else {
-                throw new PagoInsuficienteException("Pago Insuficiente");
+                throw new PagoInsuficienteException("Pago insuficiente");
             }
         } else {
             throw new PagoIncorrectoException("No tienes ninguna moneda seleccionada");
@@ -275,7 +276,7 @@ public class Window extends JFrame implements ActionListener {
         }
         if (e.getSource() == boton5) {
             if (exp_principal.Vuelto() > 0) {
-                System.out.println("Agarraste $100,En el Expendedor quedan: " + "$" + (exp_principal.Vuelto() - 100));
+                System.out.println("Agarraste $100, en el Expendedor quedan: " + "$" + (exp_principal.Vuelto() - 100));
                 if (posi_X < 160) {
                     exp_principal.getVuelto();
                     Moneda helpin = new Moneda100(panel, posi_X, 0, true);
@@ -336,7 +337,7 @@ public class Window extends JFrame implements ActionListener {
                     }
                 }
             } else {
-                System.out.println("no queda mas vuelto para entregar");
+                System.out.println("No queda mas vuelto para entregar");
             }
         }
         if (e.getSource() == boton6) {
@@ -360,7 +361,7 @@ public class Window extends JFrame implements ActionListener {
             moneda_selected.setText(" MONEDA SELECCIONADA: $1500");
         }
         if (e.getSource() == boton10) {
-            System.out.println("Rellenando");
+            System.out.println("Rellenando expendedor");
             exp_principal.rellenar();
             repaint();
         }
@@ -373,7 +374,7 @@ public class Window extends JFrame implements ActionListener {
                 }
             } else {
                 System.out.println();
-                System.out.println("AVISO: debes sacar la bebida y su vuelto para comprar denuevo");
+                System.out.println("AVISO: Debes sacar la bebida y su vuelto para comprar denuevo");
                 System.out.println();
             }
         }
